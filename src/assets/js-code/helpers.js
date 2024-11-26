@@ -40,10 +40,10 @@
 		dotinsights.Helpers = {
 			getApiEndpointUrl: ( endpoint ) => {
 				if ( 'dotinsights.subwallet.app' === window.location.host ) {
-					return 'https://dotinsights-be.subwallet.app/api/%%endpoint%%'.replace( '%%endpoint%%', endpoint );
+					return 'https://chain-abstraction-api.koni.studio/api/%%endpoint%%'.replace( '%%endpoint%%', endpoint );
 				}
 
-				return 'https://dotinsights-be-test.subwallet.app/api/%%endpoint%%'.replace( '%%endpoint%%', endpoint );
+				return 'https://chain-abstraction-api.koni.studio/api/%%endpoint%%'.replace( '%%endpoint%%', endpoint );
 			},
 
 			getScrollbarWidth: () => {
