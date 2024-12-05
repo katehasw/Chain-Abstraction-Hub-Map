@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'BricolageGrotesque';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./BricolageGrotesque-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'BricolageGrotesque';
+    font-style: normal;
+    font-weight: 500;
+    src: url('./BricolageGrotesque-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'BricolageGrotesque';
+    font-style: normal;
+    font-weight: 600;
+    src: url('./BricolageGrotesque-SemiBold.ttf') format('truetype');
+}
