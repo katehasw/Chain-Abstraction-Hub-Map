@@ -336,8 +336,6 @@
 				layerClass += thisProject.layer ? ' project-layer-color--' + Helpers.sanitizeKey( thisProject.layer ) : '';
 				var layerHTML = typeof thisProject.layer === 'string' ? '<span class="' + layerClass + '">' + thisProject.layer + '</span>' : '<span class="text-placeholder">--</span>';
 				var tokenHTML = '' !== thisProject.token ? thisProject.token : '<span class="text-placeholder">--</span>';
-				var native = true === thisProject.native ? ' checked' : '';
-				var nativeHTML = '<input type="checkbox" readonly disabled class="project-is-native"' + native + ' />'
 				var thumbnailUrl = './assets/images/projects/' + thisProject.project_slug + '.png';
 				var catHTML = '';
 
@@ -365,10 +363,9 @@
 				          '</td>';
 				output += '<td class="col-project-layer">' + layerHTML + '</td>';
 				output += '<td class="col-project-token"><span class="project-token">' + tokenHTML + '</span></td>';
-				output += '<td class="col-project-native">' + nativeHTML + '</td>';
 				output += '<td class="col-project-github">' + getGithubLink( thisProject ) + '</td>';
 				output += '<td class="col-project-twitter">' + getTwitterLink( thisProject ) + '</td>';
-				output += '<td class="col-mobile-project-info">' + getHTMLInfoMobile( thisProject, layerHTML, tokenHTML, nativeHTML ) + '</td>';
+				output += '<td class="col-mobile-project-info">' + getHTMLInfoMobile( thisProject, layerHTML, tokenHTML ) + '</td>';
 				output += '<td class="col-project-votes">' + getVoteButton( thisProject ) + '</td>';
 				output += '</tr>';
 			}
@@ -462,13 +459,8 @@
 			return '<a href="#" data-project-id="' + project.project_id + '" class="' + voteBtnClass + '"><svg class="button-icon"><use xlink:href="#symbol-ph-heart-straight"></use></svg><span class="button-text">' + dotinsights.NumberUtil.formatWithCommas( project.vote_count ) + '</span></a>';
 		}
 
-		function getHTMLInfoMobile( project, layerHTML, tokenHTML, nativeHTML ) {
+		function getHTMLInfoMobile( project, layerHTML, tokenHTML ) {
 			var output = '';
-
-			output += '<div class="project-info-line">'
-			output += '<div class="label">Native: </div>';
-			output += '<div class="value">' + nativeHTML + '</div>';
-			output += '</div>';
 
 			output += '<div class="project-info-line">'
 			output += '<div class="label">Layer: </div>';
