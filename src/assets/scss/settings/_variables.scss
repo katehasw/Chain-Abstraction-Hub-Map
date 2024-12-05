@@ -1,20 +1,76 @@
-$primary-color: #66e1b6;
-$secondary-color: #004bff;
+$color-mainPrimary: #FFF643;
+$color-mainSecondary: #6F60F1;
+$color-mainTertiary: #1DE885;
+
+$color-lime-05: #D8FE7A;
+$color-lime-06: #C4FE37;
+$color-lime-07: #7DA02F;
+
+$color-lightGreen-04: #B0F69E;
+
+$color-green-06: #1DE885;
+$color-green-08: #18704C;
+
+$color-violet-04: #9F95F6;
+$color-violet-06: #6F60F1;
+
+$color-blue-06: #2B6AFC;
+$color-blue-08: #1E3B7F;
+$color-blue-09: #1B3063;
+$color-blue-11: #171F36;
+
+$color-cherryRed-06: #FF265A;
+
+$color-orange-06: #FF7338;
+
+$color-dark-01: #121317;
+$color-dark-01-a1: rgba($color-dark-01, 1);
+$color-dark-01-a2: rgba($color-dark-01, 0.85);
+$color-dark-01-a3: rgba($color-dark-01, 0.65);
+$color-dark-01-a4: rgba($color-dark-01, 0.45);
+$color-dark-01-a5: rgba($color-dark-01, 0.3);
+$color-dark-01-a6: rgba($color-dark-01, 0.2);
+$color-dark-01-a7: rgba($color-dark-01, 0.10);
+$color-dark-01-a8: rgba($color-dark-01, 0.05);
+
+$color-dark-02: #151823;
+$color-dark-03: #1F2536;
+
+$color-light-01: #fff;
+$color-light-01-a1: rgba($color-light-01, 1);
+$color-light-01-a2: rgba($color-light-01, 0.85);
+$color-light-01-a3: rgba($color-light-01, 0.65);
+$color-light-01-a4: rgba($color-light-01, 0.45);
+$color-light-01-a5: rgba($color-light-01, 0.3);
+$color-light-01-a6: rgba($color-light-01, 0.2);
+$color-light-01-a7: rgba($color-light-01, 0.10);
+$color-light-01-a8: rgba($color-light-01, 0.05);
+
+$color-light-02: #E8E8E9;
+$color-light-03: #96979C;
+
+$primary-color: $color-blue-06;
+$secondary-color: $color-lime-06;
 
 $background-1: #000;
 $background-2: #151515;
 $background-3: #232323;
 $background-3: #333;
 
-$body-font-family: 'Plus Jakarta Sans', sans-serif;
-$body-font-weight: 400;
-$body-font-weight-secondary: 500;
+$body-font-family: 'BricolageGrotesque', sans-serif;
+$body-font-weight: 500;
+$body-font-weight-secondary: 600;
 $body-color: #ccc;
 $body-bg-color: #000;
-$heading-font-family: 'Unbounded', sans-serif;
-$heading-font-weight: 700;
+
+$heading-font-family: 'BungeeInline', sans-serif;
+$heading-font-weight: 400;
 $heading-font-weight-secondary: 500;
 $heading-color: #fff;
+
+$special-font-family: 'PixelifySans', sans-serif;
+$special-font-weight: 700;
+
 $link-color: $primary-color;
 $link-hover-color: $primary-color;
 $body-font-size-large: 20px;
