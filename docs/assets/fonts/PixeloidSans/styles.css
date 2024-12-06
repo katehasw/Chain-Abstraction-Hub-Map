@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'PixeloidSans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./PixeloidSans.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'PixeloidSans';
+    font-style: normal;
+    font-weight: 700;
+    src: url('./PixeloidSans-Bold.ttf') format('truetype');
+}
