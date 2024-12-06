@@ -4,7 +4,7 @@
 
 .most-loved-projects-table {
 	overflow-x: auto;
-	--table-row-color: #{$body-color};
+	--table-row-color: #{$color-light-01-a2};
 	--table-row-rounded: 16px;
 	--checkbox-background: #424242;
 	padding: 5px;
@@ -43,9 +43,9 @@
 
 		th {
 			font-size: 18px;
-			font-weight: 700;
+			font-weight: 600;
 			line-height: 26px;
-			padding: 0 var(--td-hoz-gap);
+			padding: 2px var(--td-hoz-gap);
 		}
 
 		thead {
@@ -58,7 +58,7 @@
 
 		td {
 			padding: var(--td-ver-gap) var(--td-hoz-gap);
-			background: var(--table-row-bg, #151515);
+			background: var(--table-row-bg, $color-dark-02);
 			--cb-background: var(--table-row-bg);
 
 			&:first-child {
@@ -99,37 +99,25 @@
 			color: var(--table-row-color);
 
 			&.row-project-highlight {
-				--table-row-bg: #021848;
-				--cb-border: #69799d;
-				--table-row-color: #69799d;
+				--table-row-bg: #{$color-blue-11};
+				--cb-border: #{$color-light-01-a4};
+				--table-row-color: #{$color-light-01-a4};
 
 				&:hover {
-					--table-row-bg: #0a2257;
+					--table-row-bg: #{$color-blue-09};
 				}
 
 				.project-layer {
-					background: #122b68;
+					background: #{$color-light-01-a7};
 				}
 
-				.project-rank {
-					font-size: $body-font-size-large;
-				}
-
-				.btn-vote {
-					--mg-button-text: #fff;
-					--mg-button-border: #122b68;
-					--mg-button-background: #122b68;
+				.rank-number {
+					height: 22px;
 				}
 			}
 
 			&:not(.row-project-highlight):hover {
-				--table-row-bg: #232323;
-
-				.btn-vote {
-					--mg-button-text: #fff;
-					--mg-button-border: #333;
-					--mg-button-background: #333;
-				}
+				--table-row-bg: #{$color-dark-03};
 			}
 		}
 	}
@@ -137,7 +125,7 @@
 	.project-info {
 		display: flex;
 		align-items: center;
-		min-height: 68px;
+		min-height: 70px;
 	}
 
 	.project-rank {
@@ -154,14 +142,16 @@
 
 		svg {
 			display: block;
-			width: 20px;
-			height: 20px;
+			width: 22px;
+			height: 22px;
 		}
 	}
 
 	.rank-number {
-		line-height: 1;
-		padding: 5px 0 0;
+		line-height: 28px;
+		font-size: 20px;
+		margin-top: 6px;
+		//padding: 5px 0 0;
 	}
 
 	.project-thumbnail {
@@ -172,9 +162,9 @@
 
 	.project-name {
 		font-family: $body-font-family;
-		font-weight: 600;
-		font-size: 16px;
-		line-height: 1.5;
+		font-weight: $body-font-weight-secondary;
+		font-size: 20px;
+		line-height: 28px;
 		text-transform: none;
 		letter-spacing: 0;
 		margin: 0;
@@ -185,17 +175,16 @@
 		line-height: 16px;
 		font-weight: $body-font-weight-secondary;
 		text-transform: uppercase;
-		margin: 7px 0 0;
+		margin-top: 6px;
 	}
 
 	.project-layer {
 		display: inline-block;
-		font-size: 15px;
-		font-weight: $body-font-weight-secondary;
+		font-size: 16px;
 		line-height: 24px;
 		padding: 4px 16px;
-		color: $primary-color;
-		background: rgba(255, 255, 255, 0.065);
+		color: $color-mainTertiary;
+		background: $color-light-01-a7;
 		border-radius: 8px;
 	}
 
@@ -213,15 +202,15 @@
 	}
 
 	.text-placeholder {
-		font-family: $heading-font-family;
-		font-weight: $heading-font-weight-secondary;
-		font-size: 14px;
+		//font-family: $heading-font-family;
+		//font-weight: $heading-font-weight-secondary;
+		//font-size: 14px;
 	}
 
 	.btn-vote {
 		--mg-button-text: #fff;
-		--mg-button-border: #292929;
-		--mg-button-background: #292929;
+		--mg-button-border: #{$color-light-01-a7};
+		--mg-button-background: #{$color-light-01-a7};
 		min-width: 147px;
 		padding: 0 10px;
 
@@ -229,12 +218,17 @@
 			width: 1em;
 			height: 1em;
 		}
+
+		&:hover {
+			--mg-button-hover-border: #{$primary-color};
+			--mg-button-hover-background: #{$primary-color};
+		}
 	}
 
 	.unvote-this {
 		--mg-button-text: #fff !important;
-		--mg-button-border: #{$secondary-color} !important;
-		--mg-button-background: #{$secondary-color} !important;
+		--mg-button-border: #{$primary-color} !important;
+		--mg-button-background: #{$primary-color} !important;
 	}
 
 	.col-project-info {
@@ -271,15 +265,19 @@
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
-	margin: 0 0 50px;
+	margin: 0 0 38px;
+	row-gap: 10px;
 
 	.heading {
-		font-size: 40px;
-		margin: 0 10px 20px 0;
+		font-size: 48px;
+		text-shadow: 4px 4px 0 $primary-color;
+		backface-visibility: hidden;
+		line-height: 52px;
+		margin-bottom: 20px;
 	}
 
 	.project-form-filter {
-		--input-height: 48px;
+		--input-height: 50px;
 		margin: 0 0 20px;
 		width: 330px;
 
@@ -375,7 +373,7 @@
 }
 
 .btn-vote {
-	font-size: 18px;
+	font-size: 20px;
 }
 
 @include media-breakpoint-up(lg) {

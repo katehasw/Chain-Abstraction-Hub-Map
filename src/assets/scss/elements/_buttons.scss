@@ -6,13 +6,13 @@ input[type='submit'],
 	position: relative;
 	transition: all .3s;
 	padding: 0 22px;
-	min-height: var(--mg-button-height, 48px);
+	min-height: var(--mg-button-height, 52px);
 	outline: none;
 	text-decoration: none;
 	color: var(--mg-button-text, $button-text);
 	border: 2px solid var(--mg-button-border, $button-border);
 	background-color: var(--mg-button-background, $button-background);
-	border-radius: var(--mg-button-rounded, var(--mg-button-height, 48px));
+	border-radius: var(--mg-button-rounded, var(--mg-button-height, 52px));
 	font-family: $button-font-family;
 	font-size: $button-font-size;
 	font-weight: $button-font-weight;
@@ -23,6 +23,7 @@ input[type='submit'],
 	text-align: center;
 	user-select: none;
 	box-shadow: 0 0 0 0 transparent;
+	background-clip: padding-box;
 
 	&:focus {
 		outline: none;
@@ -41,7 +42,8 @@ input[type='submit'],
 		color: var(--mg-button-hover-text, $button-hover-text);
 		border-color: var(--mg-button-hover-border, $button-hover-border);
 		background-color: var(--mg-button-hover-background, $button-hover-background);
-		box-shadow: 0 0 0 0.2rem var(--mg-button-hover-background, $button-hover-background);
+		//box-shadow: 0 0 0 0.2rem var(--mg-button-hover-background, $button-hover-background);
+		background-clip: border-box;
 	}
 
 	&:focus {

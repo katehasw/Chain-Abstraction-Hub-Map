@@ -55,6 +55,10 @@
 		}
 	}
 
+	.search-field::placeholder {
+		color: $color-light-01-a3;
+	}
+
 	.search-submit {
 		position: absolute;
 		top: 0;
