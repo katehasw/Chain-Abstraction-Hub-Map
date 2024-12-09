@@ -392,6 +392,11 @@
     z-index: 11;
 }
 
+.star-background {
+    background-size: 36px auto;
+    background-repeat: repeat;
+}
+
 @media screen and (min-width: 1600px) {
     .section {
         --corner-size: 100px;

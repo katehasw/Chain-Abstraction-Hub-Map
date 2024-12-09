@@ -86,11 +86,11 @@
 
 	.nav-link {
 		position: relative;
-		font-weight: 600;
-		font-size: 18px;
-		line-height: 30px;
+		font-weight: $body-font-weight;
+		font-size: 20px;
+		line-height: 25px;
 		padding: 10px 20px;
-		color: #ccc;
+		color: $color-light-01-a3;
 
 		&:hover {
 			color: $primary-color;

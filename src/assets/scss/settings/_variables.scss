@@ -61,7 +61,7 @@ $body-font-family: 'BricolageGrotesque', sans-serif;
 $body-font-weight: 500;
 $body-font-weight-secondary: 600;
 $body-color: #ccc;
-$body-bg-color: #000;
+$body-bg-color: $color-dark-01;
 
 $heading-font-family: 'BungeeInline', sans-serif;
 $heading-font-weight: 400;
@@ -84,11 +84,11 @@ $button-font-weight: 700;
 $button-letter-spacing: 0;
 $button-text-transform: none;
 $button-text: #fff;
-$button-background: $secondary-color;
-$button-border: $secondary-color;
+$button-background: $primary-color;
+$button-border: $primary-color;
 $button-hover-text: #fff;
-$button-hover-background: $secondary-color;
-$button-hover-border: $secondary-color;
+$button-hover-background: $primary-color;
+$button-hover-border: $primary-color;
 
 $form-font-family: $body-font-family;
 $form-font-weight: $body-font-weight;
