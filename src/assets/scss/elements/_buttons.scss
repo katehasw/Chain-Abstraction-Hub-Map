@@ -52,7 +52,7 @@ input[type='submit'],
 .button-icon {
 	flex-shrink: 0;
 	line-height: 1;
-	margin: 0 7px 0 0;
+	margin: 0 8px 0 0;
 
 	svg {
 		display: block;
@@ -92,10 +92,10 @@ input[type='submit'],
 }
 
 .button-secondary {
-	--mg-button-text: #fff;
+	--mg-button-text: #{$color-dark-02};
 	--mg-button-border: #{$secondary-color};
 	--mg-button-background: #{$secondary-color};
-	--mg-button-hover-text: #fff;
+	--mg-button-hover-text: #{$color-dark-02};
 	--mg-button-hover-border: #{$secondary-color};
 	--mg-button-hover-background: #{$secondary-color};
 }
@@ -103,7 +103,10 @@ input[type='submit'],
 .button-outline {
 	--mg-button-text: #fff;
 	--mg-button-border: #{$secondary-color};
-	--mg-button-background: rgba(0, 0, 0, 0);
+	--mg-button-hover-text: #{$color-dark-02};
+	--mg-button-hover-border: #{$secondary-color};
+	--mg-button-hover-background: #{$secondary-color};
+	--mg-button-background: #{$color-dark-02};
 	border-width: 2px;
 }
 
