@@ -1,20 +1,75 @@
 .site-footer {
 	--s-desc-top: 0;
-	--s-desc-width: 834px;
-	--s-callout-top: 42px;
-	padding: 167px 0 68px;
+	//--s-desc-width: 834px;
+	--s-callout-top: 12px;
+	padding: 160px 0 85px;
 	text-align: center;
+	overflow: hidden;
+
+
+	.footer-frame-1 {
+		position: absolute;
+		width: 552px;
+		top: 0;
+		left: calc(50% - 1048px);
+		z-index: 1;
+	}
+
+	.footer-frame-2 {
+		position: absolute;
+		width: 141px;
+		left: calc(50% - 467px);
+		top: 322px;
+		z-index: 12;
+	}
+
+	.footer-frame-3 {
+		position: absolute;
+		width: 127px;
+		top: 33px;
+		left: calc(50% + 554px);
+		z-index: 1;
+	}
+
+	.footer-frame-4 {
+		position: absolute;
+		width: 628px;
+		left: calc(50% + 388px);
+		z-index: 12;
+	}
+
+	.section-background {
+		top: 74px;
+		left: 18px;
+		right: 18px;
+		bottom: 36px;
+	}
 
 	.site-branding img {
 		width: 220px;
 	}
 
+	.content-block {
+		max-width: 912px;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 24px 16px;
+		background-color: $color-dark-01;
+	}
+
 	.section-description {
-		font-size: $body-font-size-small;
-		line-height: 30px;
+		font-size: 18px;
+		line-height: 1.44;
 
 		mark {
 			color: #fff;
+		}
+	}
+
+	.section-call-to-actions {
+		.button {
+			width: 100%;
+			max-width: 245px;
 		}
 	}
 
@@ -30,51 +85,31 @@
 	--shape-max-width: 80vw;
 }
 
-.footer-shape-s-circle {
-	bottom: 10%;
-	right: 15%;
-	--shape-max-width: 12vw;
-	--shape-width: 233px;
-}
-
-.footer-shape-dot {
-	top: 10%;
-	right: 10%;
-	--shape-max-width: 9vw;
-	--shape-width: 157px;
-}
-
-.footer-shape-ksm {
-	bottom: 3%;
-	left: 30%;
-	--shape-max-width: 7vw;
-	--shape-width: 102px;
-}
-
-.footer-shape-02 {
-	bottom: 3%;
-	right: 38%;
-	--shape-max-width: 5vw;
-	--shape-width: 51px;
-}
-
-.footer-shape-satellite {
-	left: 10%;
-	bottom: 20%;
-}
-
-.footer-shape-03 {
-	top: 10%;
-	left: 13%;
-	--shape-max-width: 9vw;
-	--shape-width: 164px;
-}
-
 .copyright-text {
-	margin: 42px 0 0;
-	font-size: $body-font-size-small;
+	margin: 56px 0 0;
+	font-size: 18px;
 	font-weight: 500;
-	line-height: 30px;
+	line-height: 34px;
+
+	p {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 0;
+	}
+
+	p + p {
+		margin-top: 10px;
+	}
+
+	.made-with {
+		column-gap: 6px;
+	}
+
+	.supported-by {
+		column-gap: 12px;
+	}
 
 	mark {
 		color: #fff;
@@ -91,20 +126,40 @@
 
 	img {
 		vertical-align: middle;
-		margin: 0 0 0 4px;
 	}
 
 	svg {
-		width: 18px;
-		height: 18px;
-
-		.icon {
-			fill: #ccc;
-		}
+		color: $secondary-color;
 	}
 
-	p {
-		margin: 0 0 3px;
+	.heart-icon {
+		width: 18px;
+		height: 18px;
+	}
+
+	.koni-stack-logo {
+		height: 22px;
+		width: auto;
+	}
+
+	.partner-link-separator {
+		width: 12px;
+		height: 12px;
+	}
+
+	.across-logo {
+		height: 14px;
+		width: auto;
+	}
+
+	.particle-logo {
+		height: 26px;
+		width: auto;
+	}
+
+	.avail-logo {
+		height: 16px;
+		width: auto;
 	}
 }
 

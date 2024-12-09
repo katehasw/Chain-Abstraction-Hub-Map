@@ -80,8 +80,8 @@ input[type='submit'],
 }
 
 .button-group {
-	--gutter-x: 20px;
-	--gutter-y: 10px;
+	--gutter-x: 24px;
+	--gutter-y: 24px;
 	display: flex;
 	flex-wrap: wrap;
 	margin: 0 calc(-0.5 * var(--gutter-x));

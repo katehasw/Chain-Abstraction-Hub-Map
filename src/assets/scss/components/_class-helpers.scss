@@ -141,6 +141,9 @@
 	color: #f82613;
 }
 
+.hidden {
+	display: none !important;
+}
 
 @include media-breakpoint-up(md) {
 	.hide-md-up {
