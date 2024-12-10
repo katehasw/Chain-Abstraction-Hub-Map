@@ -1,0 +1,40 @@
+.section-partner {
+  background-color: $color-dark-02;
+  padding-top: 80px;
+  padding-bottom: 80px;
+
+  .swiper-wrapper {
+    align-items: center;
+  }
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+  }
+
+  .partner-slider {
+    overflow: hidden;
+  }
+
+  .partner-item {
+    display: block;
+    width: 100%;
+  }
+
+  .partner-item-1 {
+    max-width: 175px;
+  }
+
+  .partner-item-2 {
+    max-width: 175px;
+  }
+
+  .partner-item-3 {
+    max-width: 391px;
+  }
+
+  .partner-item-4 {
+    max-width: 172px;
+  }
+}
+

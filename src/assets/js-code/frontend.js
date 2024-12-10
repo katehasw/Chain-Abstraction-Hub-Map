@@ -41,7 +41,7 @@
 
 		$( document ).ready( function() {
 			scrollTo();
-			initSliders();
+			initPartnerSlider();
 			initGrids();
 			initModal();
 			handleNavigation();
@@ -113,11 +113,40 @@
 			} )
 		}
 
-		function initSliders() {
-			if ( $.fn.SubwalletSwiper ) {
-				$( '.tm-swiper' ).each( function() {
-					$( this ).SubwalletSwiper();
-				} );
+		// function initSliders() {
+		// 	if ( $.fn.SubwalletSwiper ) {
+		// 		$( '.tm-swiper' ).each( function() {
+		// 			$( this ).SubwalletSwiper();
+		// 		} );
+		// 	}
+		// }
+
+		// todo: may use SubwalletSwiper instead, if understand how it works
+		function initPartnerSlider() {
+			const partnerSlider = $( this ).find( '#partner-slider' );
+
+			if ( partnerSlider ) {
+				const swiper = new Swiper("#partner-slider", {
+					slidesPerView: 1,
+					loop: true,
+					autoplay: {
+						delay: 3000,
+					},
+					breakpoints: {
+						576: {
+							slidesPerView: 1,
+						},
+						768: {
+							slidesPerView: 2,
+						},
+						1200: {
+							slidesPerView: 3,
+						},
+						1600: {
+							slidesPerView: 4,
+						}
+					}
+				});
 			}
 		}
 
