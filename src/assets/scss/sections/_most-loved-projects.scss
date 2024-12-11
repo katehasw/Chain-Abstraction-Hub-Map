@@ -4,7 +4,7 @@
 
 .most-loved-projects-table {
 	overflow-x: auto;
-	--table-row-color: #{$color-light-01-a2};
+	--table-row-color: #{$color-light-01-a4};
 	--table-row-rounded: 16px;
 	--checkbox-background: #424242;
 	padding: 5px;
@@ -23,7 +23,7 @@
 	table {
 		--td-beside-gap: 18px;
 		--td-ver-gap: 14px;
-		--td-hoz-gap: 5px;
+		--td-hoz-gap: 16px;
 		border-collapse: separate;
 		table-layout: fixed;
 		border-spacing: 0 12px;
@@ -72,6 +72,10 @@
 			}
 		}
 
+		td.col-project-token {
+			color: #{$color-light-01-a2};
+		}
+
 		tr {
 			position: relative;
 
@@ -102,6 +106,10 @@
 				--table-row-bg: #{$color-blue-11};
 				--cb-border: #{$color-light-01-a4};
 				--table-row-color: #{$color-light-01-a4};
+
+				td.col-project-token {
+					color: #{$color-light-01-a4};
+				}
 
 				&:hover {
 					--table-row-bg: #{$color-blue-09};
@@ -236,11 +244,11 @@
 	}
 
 	.col-project-layer {
-		width: 190px;
+		width: 200px;
 	}
 
 	.col-project-token {
-		width: 140px;
+		width: 160px;
 	}
 
 	.col-project-native {
@@ -248,15 +256,15 @@
 	}
 
 	.col-project-github {
-		width: 80px;
+		width: 146px;
 	}
 
 	.col-project-twitter {
-		width: 170px;
+		width: 246px;
 	}
 
 	.col-project-votes {
-		width: 170px;
+		width: 181px;
 	}
 }
 
@@ -382,10 +390,40 @@
 	}
 }
 
+@include media-breakpoint-down(xl) {
+	.most-loved-projects-table {
+		table {
+			--td-beside-gap: 12px;
+			--td-hoz-gap: 5px;
+		}
+
+		.col-project-layer {
+			width: 190px;
+		}
+
+		.col-project-token {
+			width: 140px;
+		}
+
+		.col-project-github {
+			width: 100px;
+		}
+
+		.col-project-twitter {
+			width: 170px;
+		}
+
+		.col-project-votes {
+			width: 170px;
+		}
+	}
+}
+
 @include media-breakpoint-down(lg) {
 	.most-loved-projects-table {
 		table {
 			--td-beside-gap: 12px;
+			--td-hoz-gap: 5px;
 		}
 
 		.col-project-layer {

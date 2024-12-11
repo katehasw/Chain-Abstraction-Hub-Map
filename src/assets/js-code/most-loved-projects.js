@@ -434,7 +434,8 @@
 		function getTwitterLink( project ) {
 			if ( project.twitter && '' !== project.twitter && 'N/A' !== project.twitter ) {
 				var text = project.twitter.replace( 'https://twitter.com/', '@' );
-				text = text.replace( 'https://mobile.twitter.com/', '@', text );
+				text = text.replace( 'https://mobile.twitter.com/', '@' );
+				text = text.replace( 'https://x.com/', '@' );
 				text = dotinsights.StringUtil.rtrim( text, '/' );
 
 				return '<a href="' + project.twitter + '" target="_blank" class="project-link-twitter text-1-row"><span>' + text + '</span></a>';
