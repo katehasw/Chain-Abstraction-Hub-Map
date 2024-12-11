@@ -160,6 +160,17 @@
 
 			.section-title {
 				font-size: 46px;
+				text-shadow: 4px 4px 0 $primary-color;
+			}
+
+			.section-description {
+				font-size: 24px;
+			}
+
+			.hero-frame-4 {
+				max-width: 800px;
+				top: 80px;
+				left: calc(50% - 400px);
 			}
 		}
 	}
@@ -173,6 +184,12 @@
 
 			.section-title {
 				font-size: 36px;
+			}
+
+			.hero-frame-4 {
+				max-width: 600px;
+				top: 80px;
+				left: calc(50% - 300px);
 			}
 		}
 	}
