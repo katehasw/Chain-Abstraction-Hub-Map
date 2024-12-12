@@ -451,7 +451,17 @@
 	}
 }
 
-.modal-error-message {
+.modal-show-info {
+	--modal-width: 450px;
+	--modal-spacing: 30px 2rem;
+	text-align: center;
+
+	.modal-content-wrap {
+		border: 2px solid $primary-color;
+	}
+}
+
+.modal-message {
 	color: #fff;
 	font-size: 20px;
 	line-height: 32px;

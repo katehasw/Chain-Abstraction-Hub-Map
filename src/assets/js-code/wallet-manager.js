@@ -352,6 +352,7 @@
 
 		var $modalConnectWallet        = $( '#modal-connect-wallet' ),
 		    $modalError                = $( '#modal-show-error' ),
+		    $modalInfo                = $( '#modal-show-info' ),
 		    $modalConnectWalletContent = $modalConnectWallet.find( '.modal-content-body' );
 
 		$modalConnectWallet.dotinsightsModal(); // Init modal.
@@ -394,7 +395,10 @@
 				evt.preventDefault();
 				evt.stopPropagation();
 
-				votingProject( $( this ) );
+				// todo: will integrate voting later
+				showModalInfo('<p>Voting coming soon!</p>')
+
+				// votingProject( $( this ) );
 			} );
 
 			// Switching wallet account.
@@ -625,6 +629,11 @@
 		function showModalError( messages ) {
 			$modalError.find( '.modal-error-message' ).html( messages );
 			$modalError.dotinsightsModal( 'open' );
+		}
+
+		function showModalInfo( messages ) {
+			$modalInfo.find( '.modal-message' ).html( messages );
+			$modalInfo.dotinsightsModal( 'open' );
 		}
 	}( jQuery )
 );
