@@ -10,7 +10,7 @@
 			page: 1,
 			foundItems: 0
 		};
-		dotinsights.FilteredProjects = dotinsights.FilteredProjects || {};
+		dotinsights.FilteredProjects = dotinsights.FilteredProjects || [];
 		var Helpers = window.dotinsights.Helpers;
 
 		var lastST = 0;

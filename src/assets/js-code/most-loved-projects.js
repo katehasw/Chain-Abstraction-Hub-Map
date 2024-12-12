@@ -4,7 +4,7 @@
 
 		window.dotinsights = window.dotinsights || {};
 		dotinsights.Projects = dotinsights.Projects || {};
-		dotinsights.FilteredProjects = dotinsights.FilteredProjects || {};
+		dotinsights.FilteredProjects = dotinsights.FilteredProjects || [];
 		dotinsights.Query = dotinsights.Query || {
 			itemsPerPage: 50,
 			maxNumPages: 1,
@@ -12,7 +12,6 @@
 			foundItems: 0
 		};
 		dotinsights.Pagination = dotinsights.Pagination || {};
-		dotinsights.FilteredProjects = dotinsights.FilteredProjects || {};
 
 		if ( window.innerWidth < 561 ) {
 			dotinsights.Pagination.midSize = 2;
@@ -35,8 +34,57 @@
 		    $projectTable    = $( '#most-loved-projects-table tbody' ),
 		    $pagination      = $( '#most-loved-projects-pagination' );
 
+		var projectPriorityList = [
+			"Koni Stack",
+			"Across",
+			"Particle",
+			"Avail Nexus",
+			"SubWallet",
+			"Polygon AggLayer",
+			"Optimism Superchain",
+			"ZKsync Elastic Chain",
+			"Arbitrum Orbit",
+			"UniswapX",
+			"1inch",
+			"Safe",
+			"Biconomy",
+			"EigenLayer",
+			"Hyperlane",
+			"Everclear",
+			"Arcana",
+			"OneBalance",
+			"Rhinestone",
+			"Okto",
+			"Espresso System",
+			"Agoric",
+			"Orb Labs",
+			"Near"
+		];
+
+		var projectPriorityMap = {};
+
+		projectPriorityList.forEach( (item, index ) => {
+			projectPriorityMap[item.toLowerCase()] = index;
+		});
+
+		function sortProject (a, b) {
+			const indexA = projectPriorityMap[a.project.toLowerCase()] ?? Infinity;
+			const indexB = projectPriorityMap[b.project.toLowerCase()] ?? Infinity;
+
+			if (indexA !== indexB) {
+				return indexA - indexB; // Sort by priority index
+			}
+			return a.project.localeCompare(b.project);
+		}
+
+		dotinsights.FilteredProjects.sort(sortProject);
+
 		$( document.body ).on( 'dotinsights/EcosystemMap/Loaded', function() {
-			dotinsights.FilteredProjects = dotinsights.Projects;
+			var filteredProjects = dotinsights.Projects.slice(); // shallow clone
+			filteredProjects.sort(sortProject);
+
+			dotinsights.FilteredProjects = filteredProjects;
+
 			var foundItems = dotinsights.FilteredProjects.length;
 
 			dotinsights.Query.page = 1;
@@ -99,7 +147,13 @@
 				} );
 			}
 
-			dotinsights.FilteredProjects = rules.length > 0 ? Helpers.filterByRules( rules, dotinsights.Projects ) : dotinsights.Projects;
+			var filteredProjects = rules.length > 0 ? Helpers.filterByRules( rules, dotinsights.Projects ) : dotinsights.Projects;
+
+			filteredProjects = filteredProjects.slice();
+			filteredProjects.sort(sortProject);
+
+			dotinsights.FilteredProjects = filteredProjects;
+
 			var foundItems = dotinsights.FilteredProjects.length;
 
 			dotinsights.Query.page = 1;
@@ -326,8 +380,12 @@
 
 				var itemClass = 'row-project';
 
-				var isInTop3 = thisProject.rank <= 3;
-				var rankHTML = '<span class="rank-number">' + thisProject.rank + '</span>';
+				//todo: if integrate voting, recheck
+				// var isInTop3 = thisProject.rank <= 3;
+				var isInTop3 = false;
+				// var rank = thisProject.rank;
+				var rank = index;
+				var rankHTML = '<span class="rank-number">' + rank + '</span>';
 				rankHTML = isInTop3 ? '<svg><use xlink:href="#symbol-crown"></use></svg>' + rankHTML : rankHTML;
 
 				itemClass += isInTop3 ? ' row-project-highlight' : '';
@@ -457,7 +515,11 @@
 			var voteBtnClass = 'button btn-vote';
 			voteBtnClass += isVoted ? ' unvote-this' : ' vote-this';
 
-			return '<a href="#" data-project-id="' + project.project_id + '" class="' + voteBtnClass + '"><svg class="button-icon"><use xlink:href="#symbol-ph-heart-straight"></use></svg><span class="button-text">' + dotinsights.NumberUtil.formatWithCommas( project.vote_count ) + '</span></a>';
+			//todo: if integrate voting, recheck
+			// var voteCount = project.vote_count;
+			var voteCount = 0;
+
+			return '<a href="#" data-project-id="' + project.project_id + '" class="' + voteBtnClass + '"><svg class="button-icon"><use xlink:href="#symbol-ph-heart-straight"></use></svg><span class="button-text">' + dotinsights.NumberUtil.formatWithCommas( voteCount ) + '</span></a>';
 		}
 
 		function getHTMLInfoMobile( project, layerHTML, tokenHTML ) {
