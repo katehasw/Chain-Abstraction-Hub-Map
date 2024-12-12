@@ -38,3 +38,9 @@
   }
 }
 
+@include media-breakpoint-down(md) {
+  .section-partner {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+}
