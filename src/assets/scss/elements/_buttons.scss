@@ -79,6 +79,12 @@ input[type='submit'],
 	}
 }
 
+.button.-disabled {
+	opacity: 0.4;
+	box-shadow: none;
+	cursor: not-allowed;
+}
+
 .button-group {
 	--gutter-x: 24px;
 	--gutter-y: 24px;
