@@ -16,32 +16,29 @@
 		var lastST = 0;
 		var $window = $( window );
 		var projectSortedCategories = {
-			wallet: 10,
-			infrastructure: 20,
-			defi: 30,
-			socialfi: 40,
-			privacy: 50,
-			aggregator: 60,
-			bridge: 70,
-			cold_wallet: 80,
-			dao: 90,
-			data: 100,
-			fintech: 110,
-			gaming: 120,
-			identity: 130,
-			nft_collection: 140,
-			iot: 150,
-			nft_marketplace: 160,
-			explorer: 170,
-			smart_contract: 180,
-			storage: 190,
-			security: 200,
-			launchpad: 210,
-			metaverse: 220,
-			sustainability: 230,
-			tooling: 240,
-			validator: 250,
-			fiat_on_ramp: 260,
+			key_management: 10,
+			account_abstraction: 20,
+			wallet: 30,
+			policies: 40,
+			intents: 50,
+			tooling: 60,
+			mempools: 70,
+			sequencing: 80,
+			auctions: 90,
+			orderflow: 100,
+			private_computation: 110,
+			routing: 120,
+			last_look: 130,
+			inventory: 140,
+			oracles: 150,
+			bridges: 160,
+			pre_confirmation: 170,
+			data_availability: 180,
+			finality: 190,
+			liquidity: 200,
+			proofs: 210,
+			execution: 220,
+			application_layer: 230,
 			uncategorized: 9999,
 		};
 
@@ -220,10 +217,16 @@
 					}
 
 					for ( var catKey in projectCategories ) {
+						var _projects = projectCategories[ catKey ];
+
+						_projects.sort( function ( a, b ) {
+							return a.project.localeCompare(b.project);
+						});
+
 						var groupCat = {
 							key: catKey,
 							name: 'uncategorized' === catKey ? 'Uncategorized' : findCatLabel( catKey, projectCategories[ catKey ][ 0 ][ 'category' ] ),
-							projects: projectCategories[ catKey ]
+							projects: _projects
 						};
 
 						groupCat.order = projectSortedCategories.hasOwnProperty( catKey ) ? projectSortedCategories[ catKey ] : 999;
