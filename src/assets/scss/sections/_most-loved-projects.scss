@@ -184,6 +184,10 @@
 		font-weight: $body-font-weight-secondary;
 		text-transform: uppercase;
 		margin-top: 6px;
+
+		span {
+			color: $secondary-color;
+		}
 	}
 
 	.project-layer {
