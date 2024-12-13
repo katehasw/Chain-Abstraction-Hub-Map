@@ -43,5 +43,5 @@ var lang = {
 	readLess: 'Read less...'
 };
 
-window.dotinsights = window.dotinsights || {};
-window.dotinsights.Localization = lang;
+window.abslayer = window.abslayer || {};
+window.abslayer.Localization = lang;
