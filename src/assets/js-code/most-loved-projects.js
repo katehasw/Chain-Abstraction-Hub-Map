@@ -2,30 +2,30 @@
 	function( $ ) {
 		'use strict';
 
-		window.dotinsights = window.dotinsights || {};
-		dotinsights.Projects = dotinsights.Projects || {};
-		dotinsights.FilteredProjects = dotinsights.FilteredProjects || [];
-		dotinsights.Query = dotinsights.Query || {
+		window.abslayer = window.abslayer || {};
+		abslayer.Projects = abslayer.Projects || {};
+		abslayer.FilteredProjects = abslayer.FilteredProjects || [];
+		abslayer.Query = abslayer.Query || {
 			itemsPerPage: 50,
 			maxNumPages: 1,
 			page: 1,
 			foundItems: 0
 		};
-		dotinsights.Pagination = dotinsights.Pagination || {};
+		abslayer.Pagination = abslayer.Pagination || {};
 
 		if ( window.innerWidth < 561 ) {
-			dotinsights.Pagination.midSize = 2;
+			abslayer.Pagination.midSize = 2;
 		} else {
-			dotinsights.Pagination.midSize = 3;
+			abslayer.Pagination.midSize = 3;
 		}
 
 		if ( window.innerWidth < 768 ) {
-			dotinsights.Query.itemsPerPage = 10;
+			abslayer.Query.itemsPerPage = 10;
 		} else {
-			dotinsights.Query.itemsPerPage = 50;
+			abslayer.Query.itemsPerPage = 50;
 		}
 
-		var Helpers = window.dotinsights.Helpers;
+		var Helpers = window.abslayer.Helpers;
 
 		var $searchForm      = $( '#project-form-filter' ),
 		    $searchSubmitBtn = $searchForm.find( '.search-submit' ),
@@ -77,19 +77,19 @@
 			return a.project.localeCompare(b.project);
 		}
 
-		dotinsights.FilteredProjects.sort(sortProject);
+		abslayer.FilteredProjects.sort(sortProject);
 
 		$( document.body ).on( 'dotinsights/EcosystemMap/Loaded', function() {
-			var filteredProjects = dotinsights.Projects.slice(); // shallow clone
+			var filteredProjects = abslayer.Projects.slice(); // shallow clone
 			filteredProjects.sort(sortProject);
 
-			dotinsights.FilteredProjects = filteredProjects;
+			abslayer.FilteredProjects = filteredProjects;
 
-			var foundItems = dotinsights.FilteredProjects.length;
+			var foundItems = abslayer.FilteredProjects.length;
 
-			dotinsights.Query.page = 1;
-			dotinsights.Query.foundItems = foundItems;
-			dotinsights.Query.maxNumPages = dotinsights.Query.itemsPerPage > 0 ? Math.ceil( foundItems / dotinsights.Query.itemsPerPage ) : 1;
+			abslayer.Query.page = 1;
+			abslayer.Query.foundItems = foundItems;
+			abslayer.Query.maxNumPages = abslayer.Query.itemsPerPage > 0 ? Math.ceil( foundItems / abslayer.Query.itemsPerPage ) : 1;
 
 			buildBubbles();
 			buildTable();
@@ -147,18 +147,18 @@
 				} );
 			}
 
-			var filteredProjects = rules.length > 0 ? Helpers.filterByRules( rules, dotinsights.Projects ) : dotinsights.Projects;
+			var filteredProjects = rules.length > 0 ? Helpers.filterByRules( rules, abslayer.Projects ) : abslayer.Projects;
 
 			filteredProjects = filteredProjects.slice();
 			filteredProjects.sort(sortProject);
 
-			dotinsights.FilteredProjects = filteredProjects;
+			abslayer.FilteredProjects = filteredProjects;
 
-			var foundItems = dotinsights.FilteredProjects.length;
+			var foundItems = abslayer.FilteredProjects.length;
 
-			dotinsights.Query.page = 1;
-			dotinsights.Query.foundItems = foundItems;
-			dotinsights.Query.maxNumPages = dotinsights.Query.itemsPerPage > 0 ? Math.ceil( foundItems / dotinsights.Query.itemsPerPage ) : 1;
+			abslayer.Query.page = 1;
+			abslayer.Query.foundItems = foundItems;
+			abslayer.Query.maxNumPages = abslayer.Query.itemsPerPage > 0 ? Math.ceil( foundItems / abslayer.Query.itemsPerPage ) : 1;
 			buildTable();
 			buildPagination();
 		} );
@@ -228,7 +228,7 @@
 			bubbles = bubbles.map( function( bubble, index ) {
 				return {
 					...bubble,
-					...dotinsights.Projects[ index ]
+					...abslayer.Projects[ index ]
 				}
 			} );
 
@@ -266,7 +266,7 @@
 				$canvas.height( canvasHeight );
 
 				for ( var i = 0; i < numCircles; i ++ ) {
-					var newRadius = dotinsights.NumberUtil.precisionRoundMod( bubbles[ i ].r * radiusRatio, 0 );
+					var newRadius = abslayer.NumberUtil.precisionRoundMod( bubbles[ i ].r * radiusRatio, 0 );
 					// Make sure bubble not smaller than 80px.
 					bubbles[ i ].displayR = Math.max( newRadius, 40 );
 				}
@@ -275,8 +275,8 @@
 					circle = bubbles[ bubbleIndex ];
 
 					// Make sure circle inside canvas.
-					circle.x = dotinsights.NumberUtil.getRandomInt( circle.displayR, canvasWidth - circle.displayR );
-					circle.y = dotinsights.NumberUtil.getRandomInt( circle.displayR, canvasHeight - circle.displayR );
+					circle.x = abslayer.NumberUtil.getRandomInt( circle.displayR, canvasWidth - circle.displayR );
+					circle.y = abslayer.NumberUtil.getRandomInt( circle.displayR, canvasHeight - circle.displayR );
 
 					overlapping = false;
 
@@ -292,7 +292,7 @@
 							break;
 						}*/
 
-						var d = dotinsights.NumberUtil.dist( circle.x, circle.y, existing.x, existing.y );
+						var d = abslayer.NumberUtil.dist( circle.x, circle.y, existing.x, existing.y );
 						if ( d < circle.displayR + existing.displayR ) {
 							// They are overlapping.
 							overlapping = true;
@@ -320,7 +320,7 @@
 					    totalVote   = thisCircle.vote_count ? thisCircle.vote_count : 0,
 					    circleClass = 'bubble-project bubble-project--' + thisCircle.project_slug;
 					circleClass += i % 2 === 0 ? ' move-vertical' : ' move-vertical-reversed';
-					circleClass += ' ' + moveDurations[ dotinsights.NumberUtil.getRandomInt( 0, 3 ) ];
+					circleClass += ' ' + moveDurations[ abslayer.NumberUtil.getRandomInt( 0, 3 ) ];
 
 					var html = '<div class="' + circleClass + '">';
 					html += '<img src="./assets/images/projects/' + thisCircle.project_slug + '.png" alt="">';
@@ -343,21 +343,21 @@
 
 		$( window ).on( 'hresize', function() {
 			if ( window.innerWidth < 561 ) {
-				dotinsights.Pagination.midSize = 2;
+				abslayer.Pagination.midSize = 2;
 			} else {
-				dotinsights.Pagination.midSize = 3;
+				abslayer.Pagination.midSize = 3;
 			}
 
 			if ( window.innerWidth < 768 ) {
-				dotinsights.Query.itemsPerPage = 10;
+				abslayer.Query.itemsPerPage = 10;
 			} else {
-				dotinsights.Query.itemsPerPage = 50;
+				abslayer.Query.itemsPerPage = 50;
 			}
 		} );
 
 		$pagination.on( 'click', 'a', function( evt ) {
 			evt.preventDefault();
-			dotinsights.Query.page = $( this ).data( 'page' ); // Next page.
+			abslayer.Query.page = $( this ).data( 'page' ); // Next page.
 
 			var offset = $projectTable.offset().top - 120; // header height + content spacing.
 			$( 'html, body' ).animate( { scrollTop: offset }, 200 );
@@ -368,15 +368,15 @@
 
 		function buildTable( append = false ) {
 			var offset = (
-				             dotinsights.Query.page - 1
-			             ) * dotinsights.Query.itemsPerPage + 1,
-			    getTo  = offset + dotinsights.Query.itemsPerPage,
+				             abslayer.Query.page - 1
+			             ) * abslayer.Query.itemsPerPage + 1,
+			    getTo  = offset + abslayer.Query.itemsPerPage,
 			    output = '';
 
-			getTo = getTo > dotinsights.Query.foundItems ? dotinsights.Query.foundItems + 1 : getTo;
+			getTo = getTo > abslayer.Query.foundItems ? abslayer.Query.foundItems + 1 : getTo;
 
 			for ( var index = offset; index < getTo; index ++ ) {
-				var thisProject = dotinsights.FilteredProjects[ index - 1 ];
+				var thisProject = abslayer.FilteredProjects[ index - 1 ];
 
 				var itemClass = 'row-project';
 
@@ -433,16 +433,16 @@
 
 		function buildPagination() {
 			var output   = '',
-			    maxPages = dotinsights.Query.maxNumPages;
+			    maxPages = abslayer.Query.maxNumPages;
 
 			if ( 1 < maxPages ) {
-				var currentPage = dotinsights.Query.page;
+				var currentPage = abslayer.Query.page;
 				var allItems = [ currentPage ];
 
 				var step = 1;
 				for ( var i = currentPage - 1; i > 0; i -- ) {
 					allItems.unshift( i );
-					if ( step === dotinsights.Pagination.midSize ) {
+					if ( step === abslayer.Pagination.midSize ) {
 						break;
 					}
 
@@ -452,7 +452,7 @@
 				step = 1;
 				for ( var i = currentPage + 1; i <= maxPages; i ++ ) {
 					allItems.push( i );
-					if ( step === dotinsights.Pagination.midSize ) {
+					if ( step === abslayer.Pagination.midSize ) {
 						break;
 					}
 
@@ -494,7 +494,7 @@
 				var text = project.twitter.replace( 'https://twitter.com/', '@' );
 				text = text.replace( 'https://mobile.twitter.com/', '@' );
 				text = text.replace( 'https://x.com/', '@' );
-				text = dotinsights.StringUtil.rtrim( text, '/' );
+				text = abslayer.StringUtil.rtrim( text, '/' );
 
 				return '<a href="' + project.twitter + '" target="_blank" class="project-link-twitter text-1-row"><span>' + text + '</span></a>';
 			}
@@ -511,7 +511,7 @@
 		}
 
 		function getVoteButton( project ) {
-			var isVoted = dotinsights.VotedProjects.includes( project.project_id );
+			var isVoted = abslayer.VotedProjects.includes( project.project_id );
 			var voteBtnClass = 'button btn-vote';
 			voteBtnClass += isVoted ? ' unvote-this' : ' vote-this';
 
@@ -519,7 +519,7 @@
 			// var voteCount = project.vote_count;
 			var voteCount = 0;
 
-			return '<a href="#" data-project-id="' + project.project_id + '" class="' + voteBtnClass + '"><svg class="button-icon"><use xlink:href="#symbol-ph-heart-straight"></use></svg><span class="button-text">' + dotinsights.NumberUtil.formatWithCommas( voteCount ) + '</span></a>';
+			return '<a href="#" data-project-id="' + project.project_id + '" class="' + voteBtnClass + '"><svg class="button-icon"><use xlink:href="#symbol-ph-heart-straight"></use></svg><span class="button-text">' + abslayer.NumberUtil.formatWithCommas( voteCount ) + '</span></a>';
 		}
 
 		function getHTMLInfoMobile( project, layerHTML, tokenHTML ) {

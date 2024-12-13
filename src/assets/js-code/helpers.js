@@ -1,7 +1,7 @@
 (
 	function( window, $ ) {
 		'use strict';
-		window.dotinsights = window.dotinsights || {};
+		window.abslayer = window.abslayer || {};
 
 		var $supports_html5_storage = true;
 		try {
@@ -16,7 +16,7 @@
 			$supports_html5_storage = false;
 		}
 
-		dotinsights.StorageUtil = {
+		abslayer.StorageUtil = {
 			isSupported: $supports_html5_storage,
 			set: function( key, value ) {
 				var settings = JSON.parse( localStorage.getItem( 'dotinsights' ) );
@@ -37,7 +37,7 @@
 			},
 		};
 
-		dotinsights.Helpers = {
+		abslayer.Helpers = {
 			getApiEndpointUrl: ( endpoint ) => {
 				if ( 'dotinsights.subwallet.app' === window.location.host ) {
 					return 'https://chain-abstraction-api.koni.studio/api/%%endpoint%%'.replace( '%%endpoint%%', endpoint );
@@ -172,14 +172,14 @@
 							for ( var termIndex = 0; termIndex < terms.length; termIndex ++ ) {
 								var thisTerm = terms[ termIndex ];
 
-								if ( dotinsights.Helpers.compareValues( item[ thisTerm.key ], thisTerm.value, thisTerm.operator ) ) { // Any rules matched.
+								if ( abslayer.Helpers.compareValues( item[ thisTerm.key ], thisTerm.value, thisTerm.operator ) ) { // Any rules matched.
 									return true;
 								}
 							}
 						} else {
 							for ( var termIndex = 0; termIndex < terms.length; termIndex ++ ) {
 								var thisTerm = terms[ termIndex ];
-								if ( ! dotinsights.Helpers.compareValues( item[ thisTerm.key ], thisTerm.value, thisTerm.operator ) ) { // Any rules not matched
+								if ( ! abslayer.Helpers.compareValues( item[ thisTerm.key ], thisTerm.value, thisTerm.operator ) ) { // Any rules not matched
 									return false;
 								}
 							}
@@ -194,7 +194,7 @@
 
 		};
 
-		dotinsights.NumberUtil = {
+		abslayer.NumberUtil = {
 			formatWithCommas: function( x ) {
 				return x.toString().replace( /\B(?=(\d{3})+(?!\d))/g, "," );
 			},
@@ -267,13 +267,13 @@
 			}
 		};
 
-		dotinsights.StringUtil = {
+		abslayer.StringUtil = {
 			rtrim: function( str, char ) {
 				return str.replace( new RegExp( char + "*$" ), '' );
 			}
 		};
 
-		dotinsights.ArrayUtil = {
+		abslayer.ArrayUtil = {
 			dynamicSort: function( property ) {
 				var sortOrder = 1;
 				if ( property[ 0 ] === "-" ) {
@@ -303,7 +303,7 @@
 			}
 		};
 
-		dotinsights.BrowserUtil = {
+		abslayer.BrowserUtil = {
 			isOpera: false,
 			isChrome: false,
 			isFirefox: false,
@@ -316,29 +316,29 @@
 		const agent = window.navigator.userAgent.toLowerCase();
 		switch ( true ) {
 			case agent.indexOf( 'edge' ) > - 1:
-				dotinsights.BrowserUtil.isEdge = true;
+				abslayer.BrowserUtil.isEdge = true;
 				break;
 			case agent.indexOf( 'edg/' ) > - 1:
-				dotinsights.BrowserUtil.isEdgeChromium = true;
+				abslayer.BrowserUtil.isEdgeChromium = true;
 				break;
 			case agent.indexOf( 'opr' ) > - 1 && ! ! window.opr:
-				dotinsights.BrowserUtil.isOpera = true;
+				abslayer.BrowserUtil.isOpera = true;
 				break;
 			case agent.indexOf( 'chrome' ) > - 1 && ! ! window.chrome:
-				dotinsights.BrowserUtil.isChrome = true;
+				abslayer.BrowserUtil.isChrome = true;
 				break;
 			case agent.indexOf( 'trident' ) > - 1:
-				dotinsights.BrowserUtil.isIE = true;
+				abslayer.BrowserUtil.isIE = true;
 				break;
 			case agent.indexOf( 'firefox' ) > - 1:
-				dotinsights.BrowserUtil.isFirefox = true;
+				abslayer.BrowserUtil.isFirefox = true;
 				break;
 			case agent.indexOf( 'safari' ) > - 1:
-				dotinsights.BrowserUtil.isSafari = true;
+				abslayer.BrowserUtil.isSafari = true;
 				break;
 		}
 
-		dotinsights.requestUtils = {
+		abslayer.requestUtils = {
 			sendPost: async function( url, data ) {
 				return new Promise( ( resolve, reject ) => {
 					const xhr = new XMLHttpRequest();

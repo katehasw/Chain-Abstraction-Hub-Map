@@ -2,16 +2,16 @@
 	function( $ ) {
 		'use strict';
 
-		window.dotinsights = window.dotinsights || {};
-		dotinsights.Projects = dotinsights.Projects || {};
-		dotinsights.Query = dotinsights.Query || {
+		window.abslayer = window.abslayer || {};
+		abslayer.Projects = abslayer.Projects || {};
+		abslayer.Query = abslayer.Query || {
 			itemsPerPage: 3,
 			maxNumPages: 1,
 			page: 1,
 			foundItems: 0
 		};
-		dotinsights.FilteredProjects = dotinsights.FilteredProjects || [];
-		var Helpers = window.dotinsights.Helpers;
+		abslayer.FilteredProjects = abslayer.FilteredProjects || [];
+		var Helpers = window.abslayer.Helpers;
 
 		var lastST = 0;
 		var $window = $( window );
@@ -100,14 +100,14 @@
 
 			var $button = $( this );
 
-			if ( dotinsights.Query.page < dotinsights.Query.maxNumPages ) {
+			if ( abslayer.Query.page < abslayer.Query.maxNumPages ) {
 				$buttonLoadmore.addClass( 'updating-icon' );
 				setTimeout( function() {
-					dotinsights.Query.page += 1;
+					abslayer.Query.page += 1;
 					buildList( true );
 					$buttonLoadmore.removeClass( 'updating-icon' );
 
-					if ( dotinsights.Query.page === dotinsights.Query.maxNumPages ) {
+					if ( abslayer.Query.page === abslayer.Query.maxNumPages ) {
 						$button.hide();
 					}
 				}, 700 );
@@ -150,7 +150,7 @@
 		}
 
 		async function initProjects() {
-			await sortAndGroup( dotinsights.Projects );
+			await sortAndGroup( abslayer.Projects );
 			buildFilters();
 			buildList();
 		}
@@ -185,7 +185,7 @@
 				} );
 			}
 
-			var results = rules.length > 0 ? Helpers.filterByRules( rules, dotinsights.Projects ) : dotinsights.Projects;
+			var results = rules.length > 0 ? Helpers.filterByRules( rules, abslayer.Projects ) : abslayer.Projects;
 			if ('' !== cat) {
 				await sortAndGroup( results , cat );
 			} else {
@@ -236,14 +236,14 @@
 				}
 
 				// Sort by order.
-				results = dotinsights.ArrayUtil.sortByKey( results, 'order', 'ASC' );
+				results = abslayer.ArrayUtil.sortByKey( results, 'order', 'ASC' );
 				var foundItems = results.length;
-				dotinsights.FilteredProjects = results;
-				dotinsights.Query.page = 1;
-				dotinsights.Query.foundItems = foundItems;
-				dotinsights.Query.maxNumPages = dotinsights.Query.itemsPerPage > 0 ? Math.ceil( foundItems / dotinsights.Query.itemsPerPage ) : 1;
+				abslayer.FilteredProjects = results;
+				abslayer.Query.page = 1;
+				abslayer.Query.foundItems = foundItems;
+				abslayer.Query.maxNumPages = abslayer.Query.itemsPerPage > 0 ? Math.ceil( foundItems / abslayer.Query.itemsPerPage ) : 1;
 
-				if ( dotinsights.Query.maxNumPages > 1 ) {
+				if ( abslayer.Query.maxNumPages > 1 ) {
 					$buttonLoadmore.show();
 				} else {
 					$buttonLoadmore.hide();
@@ -254,12 +254,12 @@
 		}
 
 		function buildFilters() {
-			var allProjects = dotinsights.Projects.length;
+			var allProjects = abslayer.Projects.length;
 			var $filterWrap = $( '#project-categories-filter' );
 			var output = '<a href="#" data-cat="" class="current filter-item filter-all"><span class="filter-name">All projects</span><span class="filter-count">' + allProjects + '</span></a>';
 
-			for ( var catIndex = 0; catIndex < dotinsights.FilteredProjects.length; catIndex ++ ) {
-				var thisCat   = dotinsights.FilteredProjects[ catIndex ],
+			for ( var catIndex = 0; catIndex < abslayer.FilteredProjects.length; catIndex ++ ) {
+				var thisCat   = abslayer.FilteredProjects[ catIndex ],
 				    projects  = thisCat.projects,
 				    itemClass = 'filter-item project-cat-color--' + thisCat.key;
 
@@ -271,15 +271,15 @@
 
 		function buildList( append = false ) {
 			var offset = (
-				             dotinsights.Query.page - 1
-			             ) * dotinsights.Query.itemsPerPage + 1,
-			    getTo  = offset + dotinsights.Query.itemsPerPage,
+				             abslayer.Query.page - 1
+			             ) * abslayer.Query.itemsPerPage + 1,
+			    getTo  = offset + abslayer.Query.itemsPerPage,
 			    output = '';
 
-			getTo = getTo > dotinsights.Query.foundItems ? dotinsights.Query.foundItems + 1 : getTo;
+			getTo = getTo > abslayer.Query.foundItems ? abslayer.Query.foundItems + 1 : getTo;
 
 			for ( var catIndex = offset; catIndex < getTo; catIndex ++ ) {
-				var thisCategory     = dotinsights.FilteredProjects[ catIndex - 1 ],
+				var thisCategory     = abslayer.FilteredProjects[ catIndex - 1 ],
 				    projects         = thisCategory.projects,
 				    catTotalProjects = projects.length,
 				    catItemClass     = 'tm-animation fade-in-up cat-item cat-' + thisCategory.key,

@@ -2,7 +2,7 @@
 	function( $ ) {
 		'use strict';
 
-		var dotinsightsModal = function( $el, options ) {
+		var abslayerModal = function( $el, options ) {
 			this.$el = $el;
 			this.ACTIVE_CLASS = 'open';
 			this.initialized = false;
@@ -68,9 +68,9 @@
 
 				$el.addClass( plugin.ACTIVE_CLASS );
 
-				window.dotinsights.Helpers.setBodyOverflow();
+				window.abslayer.Helpers.setBodyOverflow();
 
-				if ( this.settings.perfectScrollbar && $.fn.perfectScrollbar && ! window.dotinsights.Helpers.isHandheld() ) {
+				if ( this.settings.perfectScrollbar && $.fn.perfectScrollbar && ! window.abslayer.Helpers.isHandheld() ) {
 					$el.find( '.modal-content-wrap' ).perfectScrollbar();
 				}
 
@@ -85,7 +85,7 @@
 
 				$el.removeClass( plugin.ACTIVE_CLASS );
 
-				window.dotinsights.Helpers.unsetBodyOverflow();
+				window.abslayer.Helpers.unsetBodyOverflow();
 
 				$( document.body ).trigger( 'dotinsightsModalClose', [ $el ] );
 				$el.trigger( 'dotinsightsModalClose' );
@@ -97,7 +97,7 @@
 		const namespace = 'dotinsightsModal';
 
 		$.fn.extend( {
-			dotinsightsModal: function( args, update ) {
+			abslayerModal: function( args, update ) {
 				// Check if selected element exist.
 				if ( ! this.length ) {
 					return this;
@@ -117,10 +117,10 @@
 						instance.triggerMethod( args, update );
 					} else { // Create new instance.
 						if ( typeof args === 'string' ) {
-							instance = new dotinsightsModal( $el );
+							instance = new abslayerModal( $el );
 							instance.triggerMethod( args, update );
 						} else {
-							instance = new dotinsightsModal( $el, args );
+							instance = new abslayerModal( $el, args );
 						}
 
 						$.data( this, namespace, instance );

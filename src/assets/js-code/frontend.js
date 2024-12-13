@@ -2,7 +2,7 @@
 	function( $ ) {
 		'use strict';
 
-		var Helpers = dotinsights.Helpers,
+		var Helpers = abslayer.Helpers,
 		    $window = $( window ),
 		    $body   = $( document.body ),
 		    wWidth  = window.innerWidth,
@@ -83,16 +83,16 @@
 		}
 
 		function initModal() {
-			if ( $.fn.dotinsightsModal ) {
+			if ( $.fn.abslayerModal ) {
 				$body.on( 'click', '[data-dotinsights-toggle="modal"]', function( evt ) {
 					evt.preventDefault();
 					var $target = $( $( this ).data( 'dotinsights-target' ) );
 
 					if ( $target.length > 0 ) {
 						if ( $( this ).attr( 'data-dotinsights-dismiss' ) === '1' ) {
-							$target.dotinsightsModal( 'close' );
+							$target.abslayerModal( 'close' );
 						} else {
-							$target.dotinsightsModal( 'open' );
+							$target.abslayerModal( 'open' );
 						}
 					}
 				} );

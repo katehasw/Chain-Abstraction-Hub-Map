@@ -2,7 +2,7 @@
 	function( $ ) {
 		'use strict';
 
-		var locate = window.dotinsights.Localization;
+		var locate = window.abslayer.Localization;
 		var baseUrl = location.origin;
 		var partname = location.pathname.split( '/' );
 
@@ -15,7 +15,7 @@
 		var sourceBaseUrl = baseUrl + '/assets/data/';
 		var tokenBaseUrl = baseUrl + '/assets/images/token/';
 
-		var NumberUtil                      = dotinsights.NumberUtil,
+		var NumberUtil                      = abslayer.NumberUtil,
 		    $allCharts                      = $( '.block-chart' ),
 		    dateFormatter                   = '{dd}/{MM}/{yyyy}',
 		    dateShortFormatter              = '{MM}/{yyyy}',
