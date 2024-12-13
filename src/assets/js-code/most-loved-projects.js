@@ -79,7 +79,7 @@
 
 		abslayer.FilteredProjects.sort(sortProject);
 
-		$( document.body ).on( 'dotinsights/EcosystemMap/Loaded', function() {
+		$( document.body ).on( 'abslayer/EcosystemMap/Loaded', function() {
 			var filteredProjects = abslayer.Projects.slice(); // shallow clone
 			filteredProjects.sort(sortProject);
 
@@ -103,7 +103,7 @@
 
 				setTimeout( function() {
 					$searchSubmitBtn.removeClass( 'updating-icon' );
-					$( document.body ).trigger( 'dotinsights/EcosystemMap/Searching' );
+					$( document.body ).trigger( 'abslayer/EcosystemMap/Searching' );
 				}, 300 )
 			}, searchDelay );
 		} );
@@ -111,13 +111,13 @@
 		$searchForm.on( 'submit', function( evt ) {
 			clearTimeout( searching );
 			searching = setTimeout( function() {
-				$( document.body ).trigger( 'dotinsights/EcosystemMap/Searching' );
+				$( document.body ).trigger( 'abslayer/EcosystemMap/Searching' );
 			}, searchDelay );
 
 			return false;
 		} );
 
-		$( document.body ).on( 'dotinsights/EcosystemMap/Searching', function( evt ) {
+		$( document.body ).on( 'abslayer/EcosystemMap/Searching', function( evt ) {
 			var searchTerm = $searchForm.find( 'input[name="s"]' ).val();
 
 			var rules = [];

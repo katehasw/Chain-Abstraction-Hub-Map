@@ -19,15 +19,15 @@
 		abslayer.StorageUtil = {
 			isSupported: $supports_html5_storage,
 			set: function( key, value ) {
-				var settings = JSON.parse( localStorage.getItem( 'dotinsights' ) );
+				var settings = JSON.parse( localStorage.getItem( 'abslayer' ) );
 				settings = settings ? settings : {};
 
 				settings[ key ] = value;
 
-				localStorage.setItem( 'dotinsights', JSON.stringify( settings ) );
+				localStorage.setItem( 'abslayer', JSON.stringify( settings ) );
 			},
 			get: function( key, defaults = '' ) {
-				var settings = JSON.parse( localStorage.getItem( 'dotinsights' ) );
+				var settings = JSON.parse( localStorage.getItem( 'abslayer' ) );
 
 				if ( settings && settings.hasOwnProperty( key ) ) {
 					return settings[ key ];
@@ -39,7 +39,7 @@
 
 		abslayer.Helpers = {
 			getApiEndpointUrl: ( endpoint ) => {
-				if ( 'dotinsights.subwallet.app' === window.location.host ) {
+				if ( 'abslayer.xyz' === window.location.host ) {
 					return 'https://chain-abstraction-api.koni.studio/api/%%endpoint%%'.replace( '%%endpoint%%', endpoint );
 				}
 

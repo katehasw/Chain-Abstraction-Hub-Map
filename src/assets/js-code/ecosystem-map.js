@@ -48,11 +48,11 @@
 						projects[ i ].rank = i + 1;
 					}
 
-					$( document.body ).trigger( 'dotinsights/EcosystemMap/Data', [ projects ] );
+					$( document.body ).trigger( 'abslayer/EcosystemMap/Data', [ projects ] );
 
 					abslayer.Projects = projects;
 
-					$( document.body ).trigger( 'dotinsights/EcosystemMap/Loaded' );
+					$( document.body ).trigger( 'abslayer/EcosystemMap/Loaded' );
 				},
 			} );
 		} );

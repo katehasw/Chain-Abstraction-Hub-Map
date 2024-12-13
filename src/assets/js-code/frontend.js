@@ -84,12 +84,12 @@
 
 		function initModal() {
 			if ( $.fn.abslayerModal ) {
-				$body.on( 'click', '[data-dotinsights-toggle="modal"]', function( evt ) {
+				$body.on( 'click', '[data-abslayer-toggle="modal"]', function( evt ) {
 					evt.preventDefault();
-					var $target = $( $( this ).data( 'dotinsights-target' ) );
+					var $target = $( $( this ).data( 'abslayer-target' ) );
 
 					if ( $target.length > 0 ) {
-						if ( $( this ).attr( 'data-dotinsights-dismiss' ) === '1' ) {
+						if ( $( this ).attr( 'data-abslayer-dismiss' ) === '1' ) {
 							$target.abslayerModal( 'close' );
 						} else {
 							$target.abslayerModal( 'open' );

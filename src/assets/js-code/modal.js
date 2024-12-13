@@ -55,14 +55,14 @@
 					} );
 
 					plugin.initialized = true;
-					$( document.body ).trigger( 'dotinsightsModalInit', [ $el ] );
+					$( document.body ).trigger( 'abslayerModalInit', [ $el ] );
 				}
 			};
 
 			this.open = function() {
 				var plugin = this;
 
-				$( '.dotinsights-modal' ).removeClass( plugin.ACTIVE_CLASS );
+				$( '.abslayer-modal' ).removeClass( plugin.ACTIVE_CLASS );
 
 				plugin.init();
 
@@ -74,8 +74,8 @@
 					$el.find( '.modal-content-wrap' ).perfectScrollbar();
 				}
 
-				$( document.body ).trigger( 'dotinsightsModalOpen', [ $el ] );
-				$el.trigger( 'dotinsightsModalOpen' );
+				$( document.body ).trigger( 'abslayerModalOpen', [ $el ] );
+				$el.trigger( 'abslayerModalOpen' );
 			};
 
 			this.close = function() {
@@ -87,14 +87,14 @@
 
 				window.abslayer.Helpers.unsetBodyOverflow();
 
-				$( document.body ).trigger( 'dotinsightsModalClose', [ $el ] );
-				$el.trigger( 'dotinsightsModalClose' );
+				$( document.body ).trigger( 'abslayerModalClose', [ $el ] );
+				$el.trigger( 'abslayerModalClose' );
 			};
 
 			this.init();
 		};
 
-		const namespace = 'dotinsightsModal';
+		const namespace = 'abslayerModal';
 
 		$.fn.extend( {
 			abslayerModal: function( args, update ) {

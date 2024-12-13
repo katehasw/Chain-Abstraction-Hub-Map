@@ -72,7 +72,7 @@
 			}
 		};
 
-		const STORE_STATE_KEY = 'dotinsightsWalletInfo';
+		const STORE_STATE_KEY = 'abslayerWalletInfo';
 
 		const walletUtils = {
 			supportedWallets: WALLETS,
@@ -414,7 +414,7 @@
 			renderWalletArea();
 		} );
 
-		$( document.body ).on( 'dotinsights/VotedProjects/Refreshed', function() {
+		$( document.body ).on( 'abslayer/VotedProjects/Refreshed', function() {
 			$( '.btn-vote' ).addClass( 'vote-this' ).removeClass( 'unvote-this' );
 
 			if ( abslayer.VotedProjects.length > 0 ) {
@@ -525,7 +525,7 @@
 				},
 				success: function( projects ) {
 					abslayer.VotedProjects = projects;
-					$( document.body ).trigger( 'dotinsights/VotedProjects/Refreshed' );
+					$( document.body ).trigger( 'abslayer/VotedProjects/Refreshed' );
 				},
 			} );
 		}

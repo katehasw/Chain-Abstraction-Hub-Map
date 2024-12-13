@@ -49,7 +49,7 @@
 		    $projectCategoriesList = $( '#project-categories-list' ),
 		    $buttonLoadmore        = $( '#btn-load-more-projects' );
 
-		$( document.body ).on( 'dotinsights/EcosystemMap/Loaded', function() {
+		$( document.body ).on( 'abslayer/EcosystemMap/Loaded', function() {
 			initProjects();
 		} );
 
@@ -60,7 +60,7 @@
 
 				setTimeout( function() {
 					$searchSubmitBtn.removeClass( 'updating-icon' );
-					$( document.body ).trigger( 'dotinsights/EcosystemMap/Searching' );
+					$( document.body ).trigger( 'abslayer/EcosystemMap/Searching' );
 				}, 300 )
 			}, searchDelay );
 		} );
@@ -68,13 +68,13 @@
 		$searchForm.on( 'submit', function( evt ) {
 			clearTimeout( searching );
 			searching = setTimeout( function() {
-				$( document.body ).trigger( 'dotinsights/EcosystemMap/Searching' );
+				$( document.body ).trigger( 'abslayer/EcosystemMap/Searching' );
 			}, searchDelay );
 
 			return false;
 		} );
 
-		$( document.body ).on( 'dotinsights/EcosystemMap/Searching', function() {
+		$( document.body ).on( 'abslayer/EcosystemMap/Searching', function() {
 			searchingProjects();
 		} );
 
@@ -92,7 +92,7 @@
 			$thisButton.addClass( 'current' );
 
 			$searchForm.find( 'input[name="cat"]' ).val( cat );
-			$searchForm.trigger( 'dotinsights/EcosystemMap/Searching' );
+			$searchForm.trigger( 'abslayer/EcosystemMap/Searching' );
 		} );
 
 		$( document.body ).on( 'click', '#btn-load-more-projects', function( evt ) {
