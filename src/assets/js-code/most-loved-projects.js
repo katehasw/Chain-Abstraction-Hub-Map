@@ -34,42 +34,20 @@
 		    $projectTable    = $( '#most-loved-projects-table tbody' ),
 		    $pagination      = $( '#most-loved-projects-pagination' );
 
-		var projectPriorityList = [
-			"Koni Stack",
-			"Across",
-			"Particle Network",
-			"Avail Nexus",
-			"SubWallet",
-			"AggLayer (Polygon)",
-			"Optimism Superchain",
-			"ZKsync",
-			"Arbitrum Orbit",
-			"UniswapX",
-			"1inch",
-			"Safe",
-			"Biconomy",
-			"EigenLayer",
-			"Hyperlane",
-			"Everclear",
-			"Arcana",
-			"OneBalance",
-			"Rhinestone",
-			"Okto",
-			"Espresso",
-			"Agoric",
-			"Orb Labs",
-			"Near"
-		];
+		var projectPriorityMap = (() => {
+			var result = {};
+			var projectPriorityConfig = abslayer.Configs?.projectPriority || [];
 
-		var projectPriorityMap = {};
+			projectPriorityConfig.forEach( (item, index ) => {
+				result[item] = index;
+			});
 
-		projectPriorityList.forEach( (item, index ) => {
-			projectPriorityMap[item.toLowerCase()] = index;
-		});
+			return result;
+		})();
 
 		function sortProject (a, b) {
-			const indexA = projectPriorityMap[a.project.toLowerCase()] ?? Infinity;
-			const indexB = projectPriorityMap[b.project.toLowerCase()] ?? Infinity;
+			const indexA = projectPriorityMap[a.project_slug] ?? Infinity;
+			const indexB = projectPriorityMap[b.project_slug] ?? Infinity;
 
 			if (indexA !== indexB) {
 				return indexA - indexB; // Sort by priority index

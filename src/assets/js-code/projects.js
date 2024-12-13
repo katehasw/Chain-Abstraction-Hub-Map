@@ -15,32 +15,19 @@
 
 		var lastST = 0;
 		var $window = $( window );
-		var projectSortedCategories = {
-			key_management: 10,
-			account_abstraction: 20,
-			wallet: 30,
-			policies: 40,
-			intent: 50,
-			tooling: 60,
-			mempools: 70,
-			sequencing: 80,
-			auction: 90,
-			order_flow: 100,
-			private_computation: 110,
-			routing: 120,
-			last_look: 130,
-			inventory: 140,
-			oracle: 150,
-			bridge: 160,
-			pre_confirmation: 170,
-			data_availability: 180,
-			finality: 190,
-			liquidity: 200,
-			proofs: 210,
-			execution: 220,
-			application_layer: 230,
-			uncategorized: 9999,
-		};
+		var projectSortedCategories = (() => {
+			var result = {
+				uncategorized: 9999,
+			};
+
+			var projectCategoryPriorityConfig = abslayer.Configs?.projectCategoryPriority || [];
+
+			projectCategoryPriorityConfig.forEach((slug, index) => {
+				result[slug] = index;
+			});
+
+			return result;
+		})();
 
 		var $searchForm            = $( '#project-form-filter' ),
 		    $searchSubmitBtn       = $searchForm.find( '.search-submit' ),
